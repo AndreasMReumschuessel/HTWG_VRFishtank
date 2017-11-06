@@ -5,11 +5,14 @@ using UnityEngine;
 public class FishController : MonoBehaviour {
     public float velocity = 0.01F;
     public float scale = 1F;
+    private Rigidbody rb;
     private void Start()
     {
-        transform.localScale = new Vector3(scale/4, scale/5, scale);
+        rb = GetComponent<Rigidbody>();
+        rb.freezeRotation = true;
+        transform.localScale = new Vector3(scale, scale, scale);
         transform.position = new Vector3(Random.Range(1, 9), Random.Range(1, 9), Random.Range(1, 9));
-        transform.Rotate(Random.Range(1, 180), Random.Range(1, 180), Random.Range(1, 180));
+        transform.Rotate(Random.Range(-5, 5), Random.Range(1, 180), 0);
     }
     // Update is called once per frame
     void Update () {
